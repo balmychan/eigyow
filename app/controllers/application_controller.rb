@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+  
+   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
+  end
+  
   def after_sign_in_path_for(resource)
         home_show_path
   end
