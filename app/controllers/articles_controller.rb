@@ -15,7 +15,9 @@ class ArticlesController < ApplicationController
       company_id = Company.create(:name => params[:company].to_s).id
     end
     
-    @article = Article.create(:note => params[:article][:note], :type => params[:type],
+    note = params[:article][:note]
+    
+    @article = Article.create(:note => note, :type => params[:type],
       :user_id => params[:article][:user_id], :company_id => company_id)
       
     reps = params[:representative].split(',')
@@ -23,6 +25,17 @@ class ArticlesController < ApplicationController
       person = CompanyPerson.find_by_name(rep.to_s)
       if person.blank?
         CompanyPerson.create(:name => rep.to_s, :company_id => company_id)
+      end
+    end
+    
+    note.each_line do |line|
+      line.chomp!
+      if line.first == '◎'
+        line.slice!(0)
+        ArticleKeyword.create(:keyword => line, :article_id => @article.id)
+      elsif line.first == '☆'
+        line.slice!(0)
+        ArticleTodo.create(:todo => line, :article_id => @article.id)
       end
     end
       
