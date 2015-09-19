@@ -17,7 +17,7 @@
           <%= f.hidden_field :user_id, :value => @user.id %>
         </div>
         <label for='time' class="col-sm-2 control-label">作成日時</label>
-        <span id='time' class="col-sm-2"></span>
+        <span id='time' class="col-sm-4 control-label"></span>
       </div>
       
       <div class="form-group">  
@@ -31,17 +31,19 @@
         </div>
       </div>
       
-      <div class='from-group'>
+      <div class='form-group'>
         <label class="col-sm-2 control-label">形式</label>
-        <label class="radio-inline col-sm-3">
-          <input type="radio" name="type" id="direct" value="DirectArticle">面談
-        </label>
-        <label class="radio-inline col-sm-3">
-        　<input type="radio" name="type" id="tel" value="TelArticle">電話
-        </label>
-        <label class="radio-inline col-sm-3">
-          <input type="radio" name="type" id="email" value="EmailArticle">E-Mail
-        </label>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default">
+            <input type="radio" name="type" id="direct" value="DirectArticle">面談
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="type" id="tel" value="TelArticle">電話
+          </label>
+          <label class="btn btn-default">
+            <input type="radio" name="type" id="email" value="EmailArticle">E-Mail
+          </label>
+        </div>
       </div>
       
       <div class="form-group"> 
@@ -51,7 +53,7 @@
       </div>
       <div class="form-group"> 
         <div class="col-sm-12">
-          <%= f.submit "送信する", :class => 'btn btn-primary btn-lg pull-right' %>
+          <%= f.submit "送信", :class => 'btn btn-primary btn-lg pull-right' %>
         </div>
       </div>
     <% end %>
