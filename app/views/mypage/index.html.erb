@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <h2>最近担当した会社の議事録の確認</h2>
+            <ol class="breadcrumb">
+              <li><a href="#">会社名1</a></li>
+              <li><a href="#">会社名2</a></li>
+              <li class="active">会社名3</li>
+            </ol>
+
+            <h2>すべてを時系列で表示</h2>    
+
+            <% Article.where(user_id: 1).each do |article| %>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><%= article.created_at %> 会社名</h3>
+                    </div>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item">キーワード</li>
+                        <li class="list-group-item">決まったこと</li>
+                    </ul>
+                    <div class="panel-body">
+                        <p><%= article.note %></p>
+                    </div>
+                </div>
+            <% end %>
+
+            <nav>
+                <ul class="pager">
+                    <li><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <h4>ToDo</h4>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge">2015/09/25</span>
+                    やるべきこと１
+                </li>
+            </ul>
+        </div>
+    </div> <!-- row -->
+</div>
