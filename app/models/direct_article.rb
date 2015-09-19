@@ -1,0 +1,2 @@
+class DirectArticle < Article
+end
