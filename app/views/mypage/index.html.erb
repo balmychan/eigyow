@@ -3,17 +3,20 @@
         <div class="col-sm-8 blog-main">
             <h2>最近担当した会社の議事録の確認</h2>
             <ol class="breadcrumb">
-                <% Article.group(:company_id).order(:created_at).limit(5).each do |article| %>
-                    <li><a href="#"><%= article.company_id %></a></li>
+                <% Article.group(:company_id).order("created_at DESC").limit(5).each do |article| %>
+                    <li><a href="#"><%= article.company.name %></a></li>
                 <% end %>
             </ol>
 
             <h2>すべてを時系列で表示</h2>    
 
-            <% Article.where(user_id: 1).each do |article| %>
+            <% Article.where(user_id: 1).order("created_at DESC").each do |article| %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><%= article.created_at.strftime("%Y年%m月%d日") %> <%= article.company_id %></h3>
+                        <h3 class="panel-title">
+                            <%= article.company.name %>
+                            <%= article.created_at.strftime("%Y年%m月%d日%H時%m分") %>
+                        </h3>
                     </div>
                     <!-- List group -->
                     <ul class="list-group">
