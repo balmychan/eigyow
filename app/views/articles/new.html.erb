@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-8">
+    <%= form_for @article, html: {:class => 'form-horizontal'} do |f| %>
+      <div class="form-group">
+        <label for='id'>作成者</label>
+        <%= f.text_field :user_id, {:id =>'user', :readonly => true, :class => 'form-control', :placeholder => @user} %>
+      </div>
+      <div class="form-group">
+        <label for='time'></label>
+        <%= text_field_tag :campany, nil, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :representative, nil, :class => 'form-control', "data-role" => "tagsinput" %>
+      </div>
+        <%= f.text_area :content, :class => 'form-control' %>
+        <%= f.submit "送信する", :class => 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div>
+</div>
