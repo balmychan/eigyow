@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :sign_in_required, only: [:new]
+  before_action :sign_in_required, only: [:search]
   def index
   end
 
@@ -9,6 +10,10 @@ class ArticlesController < ApplicationController
   end
   
   def create
+    
+  end
+  
+  def search
     
   end
 end
