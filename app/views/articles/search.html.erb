@@ -1,21 +1,26 @@
 <div class="container">
-  
+
+<%= search_form_for @q do |f| %>
 <div class="row">
   <div class="col-md-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Company">
+      <%= f.search_field :company_name_cont, :class => 'form-control', :placeholder => 'Company'%>
+      <br />
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
+        <button class="btn btn-default" type="submit">Search</button>
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
   <div class="col-md-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Keyword">
+      <input type="text" name="keyword" class="form-control" placeholder="Keyword">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
+        <%# 検索ボタン %>
+        <%= f.submit "Search", :class => 'btn btn-default' %>
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 </div>
+
+<% end %>
