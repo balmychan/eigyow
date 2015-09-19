@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :sign_in_required, only: [:search]
   before_filter :login_required
   
-def index
+  def index
   end
 
   def new
@@ -42,7 +42,8 @@ def index
         ArticleTodo.create(:todo => line, :article_id => @article.id)
       end
     end
-      
+    
+    redirect_to mypage_index_url  
   end
   
   def search
