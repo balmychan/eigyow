@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :sign_in_required, only: [:new]
   before_action :sign_in_required, only: [:search]
-  def index
+  before_filter :login_required
+  
+def index
   end
 
   def new
@@ -45,5 +47,12 @@ class ArticlesController < ApplicationController
   
   def search
     
+  end
+
+  private
+  def login_required
+    unless user_signed_in?
+      redirect_to new_user_session_url
+    end
   end
 end
