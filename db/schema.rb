@@ -13,22 +13,24 @@
 ActiveRecord::Schema.define(version: 20150919095331) do
 
   create_table "article_keywords", force: :cascade do |t|
-    t.string   "keyword",     limit: 255
-    t.integer  "proposal_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "keyword",    limit: 255
+    t.integer  "article_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "article_todos", force: :cascade do |t|
-    t.string   "todo",        limit: 255
-    t.integer  "proposal_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "todo",       limit: 255
+    t.integer  "article_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "articles", force: :cascade do |t|
     t.text     "note",       limit: 65535
     t.string   "type",       limit: 255
+    t.integer  "user_id",    limit: 4
+    t.integer  "company_id", limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150919095331) do
   end
 
   create_table "person_in_charges", force: :cascade do |t|
-    t.integer  "proposal_id",       limit: 4
+    t.integer  "article_id",        limit: 4
     t.integer  "company_person_id", limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
