@@ -1,3 +1,4 @@
 class PersonInCharge < ActiveRecord::Base
-    belongs_to :article, :company_person
+    belongs_to :article
+    belongs_to :company_person
 end
