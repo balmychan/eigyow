@@ -8,7 +8,17 @@ drawTime = ->
   hour = now.getHours()
   min = now.getMinutes()
   sec = now.getSeconds()
-  console.log(year + '/' + month + '/' + day + ' ' + hour + ':' + min)
+  
+  if month < 10
+    month = "0" + month;
+  if day < 10
+    day = "0" + day;
+  if hour < 10
+    hour = "0" + hour;
+  if min < 10
+    min = "0" + min;
+  if sec < 10
+    sec = "0" + sec;
   
   $('#time').text(year + '/' + month + '/' + day + ' ' + hour + ':' + min)
 

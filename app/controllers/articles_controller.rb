@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
   end
   
   def create
+    # ArticleコントローラーなのにArticle以外のモデルもいじってしまってるけど許して…
+    
     company_id = Company.find_by_name(params[:company].to_s)
     if company_id.blank?
       company_id = Company.create(:name => params[:company].to_s).id
