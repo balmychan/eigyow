@@ -13,21 +13,34 @@
       <div class="form-group">
         <label for='id' class="col-sm-2 control-label">作成者</label>
         <div class="col-sm-4">
-          <%= text_field_tag :article, @user, {:readonly => true, :class => 'form-control'} %>
-          <%#= f.text_field :user_id, {:id =>'user', :readonly => true, :class => 'form-control', :placeholder => @user} %>
+          <%= text_field_tag :username, nil, {:id =>'user', :readonly => true, :class => 'form-control', :placeholder => @user.username} %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
         </div>
         <label for='time' class="col-sm-2 control-label">作成日時</label>
       </div>
       
       <div class="form-group">  
-        <label for='campany' class="col-sm-2 control-label">会社名</label>
+        <label for='company' class="col-sm-2 control-label">会社名</label>
         <div class="col-sm-4">
-          <%= text_field_tag :campany, nil, :class => 'form-control' %>
+          <%= text_field_tag :company, nil, :class => 'form-control' %>
         </div>
         <label for='representative' class="col-sm-2 control-label">担当者</label>
         <div class="col-sm-4 ">
           <%= text_field_tag :representative, nil, :class => 'form-control', "data-role" => "tagsinput" %>
         </div>
+      </div>
+      
+      <div class='from-group'>
+        <label class="col-sm-2 control-label">形式</label>
+        <label class="radio-inline col-sm-3">
+          <input type="radio" name="type" id="direct" value="DirectArticle">面談
+        </label>
+        <label class="radio-inline col-sm-3">
+        　<input type="radio" name="type" id="tel" value="TelArticle">電話
+        </label>
+        <label class="radio-inline col-sm-3">
+          <input type="radio" name="type" id="email" value="EmailArticle">E-Mail
+        </label>
       </div>
       
       <div class="form-group"> 
