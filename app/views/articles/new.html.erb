@@ -1,19 +1,35 @@
-<div class="row">
-  <div class="col-xs-8">
+<div class="container">
+  <div class="well">
     <%= form_for @article, html: {:class => 'form-horizontal'} do |f| %>
       <div class="form-group">
-        <label for='id'>作成者</label>
-        <%= f.text_field :user_id, {:id =>'user', :readonly => true, :class => 'form-control', :placeholder => @user} %>
+        <label for='id' class="col-sm-2 control-label">作成者</label>
+        <div class="col-sm-4">
+          <%= text_field_tag :article, @user, {:readonly => true, :class => 'form-control'} %>
+          <%#= f.text_field :user_id, {:id =>'user', :readonly => true, :class => 'form-control', :placeholder => @user} %>
+        </div>
+        <label for='time' class="col-sm-2 control-label">作成日時</label>
       </div>
-      <div class="form-group">
-        <label for='time'></label>
-        <%= text_field_tag :campany, nil, :class => 'form-control' %>
+      
+      <div class="form-group">  
+        <label for='campany' class="col-sm-2 control-label">会社名</label>
+        <div class="col-sm-4">
+          <%= text_field_tag :campany, nil, :class => 'form-control' %>
+        </div>
+        <label for='representative' class="col-sm-2 control-label">担当者</label>
+        <div class="col-sm-4">
+          <%= text_field_tag :representative, nil, :class => 'form-control', "data-role" => "tagsinput" %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= text_field_tag :representative, nil, :class => 'form-control', "data-role" => "tagsinput" %>
+      
+      <div class="form-group"> 
+        <div class="col-sm-12">
+          <%= f.text_area :note, :rows => "30" , :class => 'form-control' %>
+        </div>
       </div>
-        <%= f.text_area :content, :class => 'form-control' %>
-        <%= f.submit "送信する", :class => 'btn btn-default' %>
+      <div class="form-group"> 
+        <div class="col-sm-12">
+          <%= f.submit "送信する", :class => 'btn btn-primary btn-lg pull-right' %>
+        </div>
       </div>
     <% end %>
   </div>
