@@ -46,6 +46,8 @@ def index
   end
   
   def search
+    @q        = Article.search(params[:q])
+    @articles = @q.result(distinct: true)
     
   end
 
