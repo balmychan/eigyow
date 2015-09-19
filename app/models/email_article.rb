@@ -1,0 +1,2 @@
+class EmailArticle < Article
+end

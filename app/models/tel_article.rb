@@ -1,0 +1,2 @@
+class TelArticle < Article
+end
