@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :articles, :only => [:index, :new, :create]
   
-  devise_for :users
+  devise_for :users, path_names: { sign_in: "login", sign_out: "logout"}
+  
   get 'home/index'
 
   get 'home/show'
