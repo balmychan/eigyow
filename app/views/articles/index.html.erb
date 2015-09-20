@@ -8,28 +8,26 @@
 </style>
 
 <div class="container col-sm-9 col-sm-offset-3">
-  
+<h2>議事録の検索</h2>  
 <div class="row">
-  <div class="col-md-6">
-    <div class="input-group">
-      <%= search_form_for @q do |f| %>
-      <%= f.text_field :company_name_cont, :class => 'form-control', :placeholder => 'Company' %>
-      <span class="input-group-btn">
-        <%= f.submit'Search', :class => 'btn btn-default' %>
-      </span>
-      <% end %>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  <div class="col-md-6">
-    <div class="input-group">
-      <%= search_form_for @q do |f| %>
-      <%= f.text_field :article_keywords_keyword_cont, :class => 'form-control', :placeholder => 'Keyword' %>
-      <span class="input-group-btn">
-        <%= f.submit'Search', :class => 'btn btn-default' %>
-      </span>
-      <% end %>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
+	<%= search_form_for @q do |f| %>
+	  <div class="col-md-3">
+	    <div class="input-group">
+	      <%= f.text_field :company_name_cont, :class => 'form-control', :placeholder => 'Company' %>
+			</div>
+		</div>
+		
+	  <div class="col-md-3">
+	    <div class="input-group">
+ 	     <%= f.text_field :article_keywords_keyword_cont, :class => 'form-control', :placeholder => 'Keyword' %>
+   	 </div><!-- /input-group -->
+  	</div><!-- /.col-lg-6 -->
+
+	  <div class="col-md-3">
+ 	     <%= f.submit'Search', :class => 'btn btn-default' %>	  	
+  	</div>
+  	
+	<% end %>
 </div><!-- /.row -->
 <table class="table table-striped">
 	  <thead>
