@@ -91,7 +91,9 @@
                         
                         <li class='modal-list-item'>
                         <h4 class="modal-list-item-heading">議事録</h4>
-                            <p class="modal-list-item-text"><%= article.note %></p>
+                          <% article.note.each_line do |line| %>
+                            <p class="modal-list-item-text"><%= line %></p>	  
+                          <% end %>
                         </li>
                         
                         <li class='modal-list-item'>
