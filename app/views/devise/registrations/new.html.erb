@@ -28,9 +28,11 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", :class => 'btn btn-primary btn-lg pull-right' %>
+    <div class="row">
+      <%= f.submit "Sign up", :class => 'btn btn-primary pull-right' %>
+    </div>
   </div>
 <% end %>
 </div>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
