@@ -25,8 +25,10 @@
                     </div>
                     <!-- List group -->
                     <ul class="list-group">
-                        <li class="list-group-item">キーワード</li>
-                        <li class="list-group-item">決まったこと</li>
+                        <% ArticleKeyword.where(article_id: article.id).each do |articlekeyword| %>
+                        <li class="list-group-item">キーワード：<%= articlekeyword.keyword %></li>
+                        <li class="list-group-item">決まったこと：</li>
+                        <% end %>
                     </ul>
                     <div class="panel-body">
                         <p><%= article.note %></p>
