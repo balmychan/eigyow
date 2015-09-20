@@ -1,16 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8 blog-main">
-            <h2>最近担当した会社の議事録の確認</h2>
+            <h2>最近コンタクトをとった会社の議事録の確認</h2>
+
             <ol class="breadcrumb">
                 <% Article.group(:company_id).order("created_at DESC").limit(5).each do |article| %>
-                    <li><a href="#"><%= article.company.name %></a></li>
+                    <li><a href="./index?c_id=<%= article.company_id %>"><%= article.company.name %></a></li>
                 <% end %>
+                <li><a href="./index">すべて表示</a></li>
             </ol>
 
-            <h2>すべてを時系列で表示</h2>    
+            <h2><%= @c_name %>を時系列で表示</h2>
+            <!-- 追加箇所開始 -->
+            <p><%= page_entries_info @articles %></p>
+            <!-- 追加箇所終了 -->
 
-            <% Article.where(user_id: 1).order("created_at DESC").each do |article| %>
+            <% @articles.each do |article| %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
@@ -29,12 +34,16 @@
                 </div>
             <% end %>
 
-            <nav>
-                <ul class="pager">
-                    <li><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </nav>
+            <!-- 追加箇所開始 -->
+            <%= paginate @articles %>
+            <!-- 追加箇所終了 -->
+
+            <!--<nav>-->
+            <!--    <ul class="pager">-->
+            <!--        <li><a href="#">Previous</a></li>-->
+            <!--        <li><a href="#">Next</a></li>-->
+            <!--    </ul>-->
+            <!--</nav>-->
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
