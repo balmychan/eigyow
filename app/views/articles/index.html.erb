@@ -15,7 +15,7 @@
       <%= search_form_for @q do |f| %>
       <%= f.text_field :company_name_cont, :class => 'form-control', :placeholder => 'Company' %>
       <span class="input-group-btn">
-        <%= f.submit'Search', :class => 'btn btn-default', :type => 'button' %>
+        <%= f.submit'Search', :class => 'btn btn-default' %>
       </span>
       <% end %>
     </div><!-- /input-group -->
@@ -25,13 +25,13 @@
       <%= search_form_for @q do |f| %>
       <%= f.text_field :article_keywords_keyword_cont, :class => 'form-control', :placeholder => 'Keyword' %>
       <span class="input-group-btn">
-        <%= f.submit'Search', :class => 'btn btn-default', :type => 'button' %>
+        <%= f.submit'Search', :class => 'btn btn-default' %>
       </span>
       <% end %>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
-<table>
+<table class="table table-striped">
 	  <thead>
 	    <tr>
 	      <th>Company</th>
@@ -45,7 +45,11 @@
 	      <tr>
 	        <td><%= article.company.name %></td>
 	        <td><%= article.created_at.strftime('%Y年%m月%d日')%></td>
-	        <td><%= article.article_keywords %></td>
+	        <% keywords = '' %>
+	        <% article.article_keywords.each do |keyword| %>
+	        <% keywords = keywords + keyword.keyword + "\n" %>
+	        <% end %>
+	        <td><%= keywords %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
