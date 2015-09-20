@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     # ArticleコントローラーなのにArticle以外のモデルもいじってしまってるけど許して…
     company = Company.find_by_name(params[:company].to_s)
     if company.blank?
-      company = Company.create(:name => params[:company].to_s).id
+      company = Company.create(:name => params[:company].to_s)
     end
     
     company_id = company.id
