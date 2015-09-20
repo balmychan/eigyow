@@ -3,7 +3,9 @@ class ArticlesController < ApplicationController
   before_action :sign_in_required, only: [:search]
   before_filter :login_required
   
-def index
+  def index
+    @q        = Article.search(params[:q])
+    @articles = @q.result(distinct: true)
   end
 
   def new
@@ -43,12 +45,6 @@ def index
       end
     end
       
-  end
-  
-  def search
-    @q        = Article.search(params[:q])
-    @articles = @q.result(distinct: true)
-    
   end
 
   private
