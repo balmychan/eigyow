@@ -4,6 +4,8 @@ class ArticlesController < ApplicationController
   before_filter :login_required
   
   def index
+    @q        = Article.search(params[:q])
+    @articles = @q.result(distinct: true)
   end
 
   def new
@@ -51,12 +53,6 @@ class ArticlesController < ApplicationController
     end
     
     redirect_to mypage_index_url  
-  end
-  
-  def search
-    @q        = Article.search(params[:q])
-    @articles = @q.result(distinct: true)
-    
   end
 
   private
