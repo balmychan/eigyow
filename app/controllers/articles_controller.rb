@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
   before_action :sign_in_required, only: [:search]
   before_filter :login_required
   
+  autocomplete :company, :name, :full => true
+  
   def index
     @q        = Article.search(params[:q])
     @articles = @q.result(distinct: true)
@@ -17,7 +19,7 @@ class ArticlesController < ApplicationController
     # ArticleコントローラーなのにArticle以外のモデルもいじってしまってるけど許して…
     company = Company.find_by_name(params[:company].to_s)
     if company.blank?
-      company = Company.create(:name => params[:company].to_s).id
+      company = Company.create(:name => params[:company].to_s)
     end
     
     company_id = company.id

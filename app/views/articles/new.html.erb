@@ -25,7 +25,8 @@
       <div class="form-group">  
         <label for='company' class="col-sm-2 control-label">会社名</label>
         <div class="col-sm-4">
-          <%= text_field_tag :company, nil, :class => 'form-control' %>
+          <%#= text_field_tag :company, nil, :class => 'form-control' %>
+          <%= autocomplete_field_tag :company, '', autocomplete_company_name_articles_path, :class => 'form-control' %>
         </div>
         <label for='representative' class="col-sm-2 control-label">担当者</label>
         <div class="col-sm-4 ">

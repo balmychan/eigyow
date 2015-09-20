@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :articles, :only => [:index, :new, :create]
+  resources :articles, :only => [:index, :new, :create] do
+    get :autocomplete_company_name, :on => :collection
+  end
   
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout"}
   
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   get 'articles/index'
 
   get 'files/download' => 'files#download'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
