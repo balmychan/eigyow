@@ -15,12 +15,12 @@ class ArticlesController < ApplicationController
   
   def create
     # ArticleコントローラーなのにArticle以外のモデルもいじってしまってるけど許して…
-    
-    company_id = Company.find_by_name(params[:company].to_s)
-    if company_id.blank?
-      company_id = Company.create(:name => params[:company].to_s).id
+    company = Company.find_by_name(params[:company].to_s)
+    if company.blank?
+      company = Company.create(:name => params[:company].to_s).id
     end
     
+    company_id = company.id
     note = params[:article][:note]
     
     @article = Article.create(:note => note, :type => params[:type],
