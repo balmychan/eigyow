@@ -10,9 +10,12 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    company_id = Company.find_by_name(params[:company].to_s)
-    if company_id.blank?
+    company = Company.find_by_name(params[:company].to_s)
+
+    if company.blank?
       company_id = Company.create(:name => params[:company].to_s).id
+    else
+      company_id = company.id
     end
     
     note = params[:article][:note]
