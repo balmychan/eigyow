@@ -42,9 +42,13 @@
 	  </thead>
 
 	  <tbody>
-	    <% @articles.each do |article| %>
-	      <tr>
-	        <td><%= article.id %></td>
+	    <% @articles.each_with_index do |article, i| %>
+	    <tr>
+	        <td>
+	        <a href="#myModal<%= i %>" role="button" class="btn" data-toggle="modal">
+	        <%= article.id %>
+	        </a>
+	        </td>
 	        <td><%= article.company.name %></td>
 	        <td><%= article.created_at.strftime('%Y年%m月%d日')%></td>
 	        <% keywords = '' %>
@@ -52,8 +56,63 @@
 	        <% keywords = keywords + keyword.keyword + "\n" %>
 	        <% end %>
 	        <td><%= keywords %></td>
-	      </tr>
+	    </tr>
+	      
+	      <!-- Modal -->
+            <div class="modal fade" id="myModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <%= article.company.name %> <%= article.created_at.strftime('%Y年%m月%d日')%>
+                    </h4>
+                  </div>
+                  <div class="modal-body">
+                     <ul class="modal-list">
+                         
+                        <li class='modal-list-item'>
+                        <h4 class="modal-list-item-heading">担当者</h4>
+                          <% people = '' %>
+	                        <% article.person_in_charges.each  do |person_in_charge| %>
+	                        <% people = people + person_in_charge.company_person.name + "\n" %>
+	                        <% end %>
+                          <p class="modal-list-item-text"><%= people %></p> 
+                        </li>
+                         
+                        <li class='modal-list-item'>
+                        <h4 class="modal-list-item-heading">要点</h4>
+                          <% keywords = '' %>
+	                        <% article.article_keywords.each do |keyword| %>
+	                        <% keywords = keywords + keyword.keyword + "\n" %>
+	                        <% end %>
+                          <p class="modal-list-item-text"><%= keywords %></p>
+                        </li>
+                        
+                        <li class='modal-list-item'>
+                        <h4 class="modal-list-item-heading">議事録</h4>
+                            <p class="modal-list-item-text"><%= article.note %></p>
+                        </li>
+                        
+                        <li class='modal-list-item'>
+                        <h4 class="modal-list-item-heading">添付ファイル</h4>
+                        <% article.proposals.each do |proposal| %>
+                          <p class="modal-list-item-text">
+                              <%= link_to proposal.upload_file_name, files_download_path(proposal) %>
+                          </p>
+                        <% end %>
+                        </li>
+                      </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+	      
 	    <% end %>
 	  </tbody>
 	</table>    
+
 </div>
