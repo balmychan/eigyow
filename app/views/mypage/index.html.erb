@@ -1,6 +1,9 @@
-<div class="container">
+
+<%= render "shared/sidebar" %>
+
+<div class="container col-sm-9 col-sm-offset-3">
     <div class="row">
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-12 blog-main">
             <h2>最近コンタクトをとった会社の議事録の確認</h2>
 
             <ol class="breadcrumb">
@@ -60,14 +63,13 @@
             <!--    </ul>-->
             <!--</nav>-->
 
-        </div>
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        
             <h4>ToDo</h4>
             <ul class="list-group">
                 <li class="list-group-item">
                     <% ArticleTodo.order(:created_at).limit(10).each do |article_todo| %>
                     <span class="badge"><%= article_todo.created_at.strftime("%Y年%m月%d日") %></span>
-                    <%= article_todo.todo %>
+                    <%= article_todo.todo %><br />
                     <% end %>
                 </li>
             </ul>
