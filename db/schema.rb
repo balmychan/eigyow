@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150919140533) do
   create_table "proposals", force: :cascade do |t|
     t.string   "upload_file_name", limit: 255
     t.binary   "upload_file",      limit: 65535
-    t.integer  "proposal_id",      limit: 4
+    t.integer  "article_id",       limit: 4
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end

@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
     unless params[:proposals].blank?
       proposals = params[:proposals]
       proposals.each do |proposal|
-        Proposal.create(:upload_file_name => proposal.original_filename, :upload_file => proposal.read, :proposal_id => @article.id)
+        Proposal.create(:upload_file_name => proposal.original_filename, :upload_file => proposal.read, :article_id => @article.id)
       end
     end
     
