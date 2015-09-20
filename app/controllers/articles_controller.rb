@@ -43,6 +43,13 @@ class ArticlesController < ApplicationController
       end
     end
     
+    unless params[:proposals].blank?
+      proposals = params[:proposals]
+      proposals.each do |proposal|
+        Proposal.create(:upload_file_name => proposal.original_filename, :upload_file => proposal.read, :proposal_id => @article.id)
+      end
+    end
+    
     redirect_to mypage_index_url  
   end
   
