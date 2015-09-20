@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # 議事録
-Article.create(:note => "議事録内容のテスト1\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
+Article.create(:note => "\新製品Bの予算について\n\少々高い\n\n\◎00万円以下だと買っていただける",
+    :type => 'TelArticle', :user_id => 1, :company_id => 1)
 Article.create(:note => "議事録内容のテスト2\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
 Article.create(:note => "議事録内容のテスト3\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
 Article.create(:note => "議事録内容のテスト4\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
