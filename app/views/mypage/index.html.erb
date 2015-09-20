@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row col-sm-offset-3">
-        <div class="col-sm-8 blog-main">
-            <h2>最近コンタクトをとった会社の議事録の確認</h2>
+        <div class="col-sm-12">
+            <h3>最近コンタクトをとった会社の議事録の確認</h3>
 
             <ol class="breadcrumb">
                 <% Article.group(:company_id).order("created_at DESC").limit(5).each do |article| %>
@@ -10,7 +10,7 @@
                 <li><a href="./index">すべて表示</a></li>
             </ol>
 
-            <h2><%= @c_name %>を時系列で表示</h2>
+            <h3><%= @c_name %>を時系列で表示</h3>
             <!-- 追加箇所開始 -->
             <p><%= page_entries_info @articles %></p>
             <!-- 追加箇所終了 -->
@@ -61,7 +61,7 @@
             <!--</nav>-->
 
         </div>
-        <div class="col-sm-4 blog-sidebar">
+        <div class="col-sm-12">
             <h4>ToDo</h4>
             <ul class="list-group">
                 <li class="list-group-item">
