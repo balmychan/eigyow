@@ -7,9 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # 議事録
-Article.create(:note => "議事録内容のテスト\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
-Article.create(:note => "議事録内容のテスト\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
-Article.create(:note => "議事録内容のテスト\n\n●Directです。", :type => 'DirectArticle', :user_id => 2, :company_id => 3)
+Article.create(:note => "議事録内容のテスト1\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
+Article.create(:note => "議事録内容のテスト2\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
+Article.create(:note => "議事録内容のテスト3\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
+Article.create(:note => "議事録内容のテスト4\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
+Article.create(:note => "議事録内容のテスト5\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
+Article.create(:note => "議事録内容のテスト6\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
+Article.create(:note => "議事録内容のテスト7\n\n●Telです。", :type => 'TelArticle', :user_id => 1, :company_id => 1)
+Article.create(:note => "議事録内容のテスト8\n\n●Emailです。", :type => 'EmailArticle', :user_id => 1, :company_id => 2)
+Article.create(:note => "議事録内容のテスト9\n\n●Directです。", :type => 'DirectArticle', :user_id => 2, :company_id => 3)
 
 # 会社名
 Company.create(:name => "株式会社A社")
