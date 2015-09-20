@@ -36,6 +36,7 @@
 	    <tr>
 	      <th>Number</th>
 	      <th>Company</th>
+	      <th>Type</th>
 	      <th>Date</th>
 	      <th>Substance</th>
 	    </tr>
@@ -50,6 +51,15 @@
 	        </a>
 	        </td>
 	        <td><%= article.company.name %></td>
+	        <td>
+	          <% if article.type == 'TelArticle' %>
+                電話
+              <% elsif article.type == 'DirectArticle' %>
+                面談
+              <% elsif article.type == 'EmailArticle' %>
+                E-mail
+              <% end %>  
+	        </td>
 	        <td><%= article.created_at.strftime('%Y年%m月%d日')%></td>
 	        <% keywords = '' %>
 	        <% article.article_keywords.each do |keyword| %>
@@ -66,6 +76,14 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">
                         <%= article.company.name %> <%= article.created_at.strftime('%Y年%m月%d日')%>
+                         @ 
+                        <% if article.type == 'TelArticle' %>
+                          電話
+                        <% elsif article.type == 'DirectArticle' %>
+                          面談
+                        <% elsif article.type == 'EmailArticle' %>
+                          E-mail
+                        <% end %> 
                     </h4>
                   </div>
                   <div class="modal-body">

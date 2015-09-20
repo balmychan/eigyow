@@ -23,6 +23,14 @@
                         <h3 class="panel-title">
                             <%= article.company.name %>
                             <%= article.created_at.strftime("%Y年%m月%d日%H時%m分") %>
+                             @
+                            <% if article.type == 'TelArticle' %>
+                              電話
+                            <% elsif article.type == 'DirectArticle' %>
+                              面談
+                            <% elsif article.type == 'EmailArticle' %>
+                              E-mail
+                            <% end %>  
                         </h3>
                     </div>
                     <!-- List group -->
