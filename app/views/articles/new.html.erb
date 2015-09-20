@@ -11,7 +11,7 @@
 
 <div class="container col-sm-9 col-sm-offset-3">
   <div class="well">
-    <%= form_for @article, html: {:class => 'form-horizontal'} do |f| %>
+    <%= form_for(@article, html: {:class => 'form-horizontal', :multipart => true}) do |f| %>
       <div class="form-group">
         <label for='id' class="col-sm-2 control-label">作成者</label>
         <div class="col-sm-4">
@@ -53,9 +53,15 @@
           <%= f.text_area :note, :rows => "30" , :class => 'form-control' %>
         </div>
       </div>
-      <div class="form-group"> 
-        <div class="col-sm-12">
-          <%= f.submit "送信", :class => 'btn btn-primary btn-lg pull-right' %>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-upload"></i></span>
+            <%= file_field_tag 'proposals[]', {:multiple => true, :class => 'form-control'} %>
+          </div>
+        </div> 
+        <div class="col-sm-6">
+          <%= f.submit "送信", :class => 'btn btn-primary pull-right' %>
         </div>
       </div>
     <% end %>
