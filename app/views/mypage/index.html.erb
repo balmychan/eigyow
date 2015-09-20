@@ -25,13 +25,26 @@
                     </div>
                     <!-- List group -->
                     <ul class="list-group">
+                        <li class='list-group-item'>
+                        <h4 class="list-group-item-heading">要点</h4>
                         <% ArticleKeyword.where(article_id: article.id).each do |articlekeyword| %>
-                        <li class="list-group-item">キーワード：<%= articlekeyword.keyword %></li>
-                        <li class="list-group-item">決まったこと：</li>
+                          <p class="list-group-item-text"><%= articlekeyword.keyword %></p>
                         <% end %>
+                        </li>
+                        
+                         <li class='list-group-item'>
+                        <h4 class="list-group-item-heading">添付ファイル</h4>
+                        <% article.proposals.each do |proposal| %>
+                          <p class="list-group-item-text">
+                              <%= link_to proposal.upload_file_name, files_download_path(proposal) %>
+                          </p>
+                        <% end %>
+                        </li>
                     </ul>
                     <div class="panel-body">
-                        <p><%= article.note %></p>
+                        <% article.note.each_line do |line| %>
+                          <%= line %><br />
+                        <% end %>
                     </div>
                 </div>
             <% end %>
