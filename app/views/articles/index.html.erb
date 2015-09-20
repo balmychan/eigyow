@@ -15,8 +15,8 @@
 	<%= search_form_for @q do |f| %>
 	  <div class="col-md-3">
 	    <div class="input-group">
-	      <%= f.text_field :company_name_cont, :class => 'form-control', :placeholder => 'Company' %>
-			</div>
+	      <%#= f.text_field :company_name_cont, :class => 'form-control', :placeholder => 'Company' %>
+	      <%= autocomplete_field_tag :company_name_cont, '', autocomplete_company_name_articles_path, :class => 'form-control', :placeholder => 'Company' %>
 		</div>
 		
 	  <div class="col-md-3">
